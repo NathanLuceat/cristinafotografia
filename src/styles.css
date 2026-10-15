@@ -41,27 +41,88 @@ html {
   box-shadow: 0 16px 32px -4px rgba(46, 46, 46, 0.08), 0 4px 12px -2px rgba(46, 46, 46, 0.04);
 }
 
-/* Swiper custom styling - discreto e elegante */
-.swiper-slide {
+/* Uma fotografia inteira por slide; miniaturas discretas para navegação. */
+#portfolio-main-swiper {
+  overflow: hidden;
+  background: var(--color-cf-cream);
+}
+
+#portfolio-main-swiper .swiper-slide {
   height: auto;
+}
+
+.portfolio-photo {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: clamp(320px, 68svh, 720px);
+  width: 100%;
+  cursor: zoom-in;
 }
 
-.swiper-pagination-bullet {
-  background: #D8CFC2 !important;
-  opacity: 0.6 !important;
-  width: 8px !important;
-  height: 8px !important;
-  transition: all 0.3s ease !important;
+.portfolio-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.swiper-pagination-bullet-active {
-  background: #2E2E2E !important;
-  opacity: 1 !important;
-  width: 24px !important;
-  border-radius: 4px !important;
+#portfolio-thumbs-swiper .swiper-slide {
+  width: clamp(64px, 12vw, 96px);
+  height: auto;
+}
+
+.portfolio-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 180ms ease, border-color 180ms ease;
+}
+
+.portfolio-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.portfolio-thumb:hover,
+.portfolio-thumb[aria-current="true"] {
+  opacity: 1;
+}
+
+.portfolio-thumb[aria-current="true"] {
+  border-color: var(--color-cf-graphite);
+}
+
+#portfolio button:focus-visible,
+#portfolio a:focus-visible {
+  outline: 2px solid var(--color-cf-graphite);
+  outline-offset: -3px;
+}
+
+#portfolio button:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+#btn-open-fullscreen,
+#btn-autoplay-toggle {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  #portfolio *, #portfolio *::before, #portfolio *::after {
+    transition-duration: 0ms !important;
+    animation: none !important;
+  }
 }
 
 /* Custom scrollbar silencioso */

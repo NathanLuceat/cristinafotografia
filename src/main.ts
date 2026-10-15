@@ -1,11 +1,12 @@
 import './styles.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/css/thumbs';
+import 'swiper/css/a11y';
 import 'photoswipe/style.css';
 
 import Swiper from 'swiper';
-import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
+import { Navigation, Keyboard, Autoplay, Thumbs, A11y } from 'swiper/modules';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import {
   createIcons,
@@ -30,117 +31,149 @@ import {
 } from 'lucide';
 import { portfolioPhotos } from './data/photos';
 
-// 1. Render Portfolio Swiper Slides (Sem nomes/rótulos, fotos maiores e em ordem desde a 1ª)
+// 1. Render the main slider and its thumbnail strip, in source order.
 function renderPortfolioSlides() {
   const wrapper = document.getElementById('swiper-portfolio-wrapper');
-  if (!wrapper) return;
+  const thumbs = document.getElementById('swiper-thumbs-wrapper');
+  if (!wrapper || !thumbs) return;
 
-  const slidesHtml = portfolioPhotos.map((photo) => {
-    return `
-      <div class="swiper-slide p-1 sm:p-2">
-        <div class="photo-passepartout w-full h-[480px] sm:h-[580px] md:h-[640px] lg:h-[700px] flex items-center justify-center rounded-2xl group relative overflow-hidden bg-white border border-cf-beige/50 p-2 sm:p-3">
-          <a
-            href="${photo.fullSrc}"
-            data-pswp-width="${photo.width}"
-            data-pswp-height="${photo.height}"
-            target="_blank"
-            rel="noreferrer"
-            class="block relative w-full h-full overflow-hidden rounded-xl cursor-zoom-in bg-cf-lightgray/40"
-            aria-label="Abrir fotografia em tela cheia com alta resolução"
-          >
-            <img
-              src="${photo.thumbSrc}"
-              alt="${photo.alt}"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-103"
-            />
-            <div class="absolute inset-0 bg-cf-graphite/0 group-hover:bg-cf-graphite/15 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-2 px-4 py-2 bg-cf-white/95 backdrop-blur-md text-cf-graphite text-xs font-medium rounded-full shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                <i data-lucide="maximize-2" class="w-4 h-4 text-cf-graphite"></i>
-                Ver em tela cheia
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-    `;
-  }).join('');
+  wrapper.innerHTML = portfolioPhotos.map((photo) => `
+    <div class="swiper-slide">
+      <a href="${photo.fullSrc}" data-pswp-width="${photo.width}"
+        data-pswp-height="${photo.height}" class="portfolio-photo"
+        aria-label="Abrir fotografia em tela cheia">
+        <img src="${photo.fullSrc}" alt="${photo.alt}"
+          width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" />
+      </a>
+    </div>
+  `).join('');
 
-  wrapper.innerHTML = slidesHtml;
+  thumbs.innerHTML = portfolioPhotos.map((photo, index) => `
+    <div class="swiper-slide">
+      <button type="button" class="portfolio-thumb" data-photo-index="${index}"
+        aria-label="Ver fotografia ${index + 1}" aria-controls="portfolio-main-swiper">
+        <img src="${photo.thumbSrc}" alt="" width="${photo.width}"
+          height="${photo.height}" loading="lazy" decoding="async" />
+      </button>
+    </div>
+  `).join('');
+
+  const total = document.getElementById('total-slide-number');
+  if (total) total.textContent = String(portfolioPhotos.length).padStart(2, '0');
 }
 
-// 2. Initialize Swiper Carousel (Partindo da 1ª foto, fotos ampliadas e navegação elegante)
+// 2. One photograph at a time, with synchronized thumbnails.
 function initSwiper() {
-  const counterEl = document.getElementById('current-slide-number');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const counter = document.getElementById('current-slide-number');
+  const autoplayButton = document.getElementById('btn-autoplay-toggle');
+  const autoplayText = document.getElementById('autoplay-text');
+  const thumbButtons = document.querySelectorAll<HTMLButtonElement>('.portfolio-thumb');
+  const thumbs = new Swiper('#portfolio-thumbs-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    watchSlidesProgress: true,
+    grabCursor: true,
+  });
 
-  const swiper = new Swiper('#portfolio-swiper', {
-    modules: [Navigation, Pagination, Keyboard, Autoplay],
-    slidesPerView: 1.08,
+  function updateSlide(swiper: Swiper) {
+    if (counter) counter.textContent = String(swiper.realIndex + 1).padStart(2, '0');
+    thumbButtons.forEach((button, index) => {
+      button.setAttribute('aria-current', String(index === swiper.realIndex));
+    });
+    swiper.slides.forEach((slide, index) => {
+      slide.inert = index !== swiper.activeIndex;
+    });
+  }
+
+  function updateAutoplay(swiper: Swiper) {
+    const running = swiper.autoplay.running;
+    if (autoplayText) autoplayText.textContent = running ? 'Pausar' : 'Reproduzir';
+    autoplayButton?.setAttribute('aria-label', running ? 'Pausar apresentação automática' : 'Iniciar apresentação automática');
+    autoplayButton?.setAttribute('aria-pressed', String(running));
+  }
+
+  const swiper = new Swiper('#portfolio-main-swiper', {
+    modules: [Navigation, Keyboard, Autoplay, Thumbs, A11y],
+    slidesPerView: 1,
     spaceBetween: 16,
     initialSlide: 0,
-    centeredSlides: false,
+    speed: reducedMotion.matches ? 0 : 500,
     grabCursor: true,
-    keyboard: {
-      enabled: true,
-    },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: true,
-      pauseOnMouseEnter: true,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-    },
+    keyboard: { enabled: true, onlyInViewport: true, pageUpDown: false },
+    thumbs: { swiper: thumbs, multipleActiveThumbs: false },
     navigation: {
-      nextEl: '.swiper-button-next-custom',
-      prevEl: '.swiper-button-prev-custom',
+      nextEl: '.swiper-button-next-main',
+      prevEl: '.swiper-button-prev-main',
     },
-    breakpoints: {
-      640: {
-        slidesPerView: 1.35,
-        spaceBetween: 22,
-      },
-      1024: {
-        slidesPerView: 1.85,
-        spaceBetween: 28,
-      },
-      1440: {
-        slidesPerView: 2.1,
-        spaceBetween: 32,
-      },
+    // Opt-in playback keeps the first photograph visible until the visitor navigates.
+    autoplay: false,
+    a11y: {
+      containerMessage: 'Portfólio de fotografias',
+      containerRoleDescriptionMessage: 'carrossel',
+      prevSlideMessage: 'Foto anterior',
+      nextSlideMessage: 'Próxima foto',
+      slideLabelMessage: '{{index}} de {{slidesLength}}',
     },
     on: {
-      init: function (s) {
-        if (counterEl) {
-          counterEl.textContent = String(s.realIndex + 1).padStart(2, '0');
-        }
-      },
-      slideChange: function (s) {
-        if (counterEl) {
-          counterEl.textContent = String(s.realIndex + 1).padStart(2, '0');
-        }
-      },
+      init: updateSlide,
+      slideChange: updateSlide,
+      autoplayStart: updateAutoplay,
+      autoplayStop: updateAutoplay,
     },
   });
 
+  swiper.params.autoplay = { delay: 5000, disableOnInteraction: true, stopOnLastSlide: true, waitForTransition: true };
+
+  thumbButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      swiper.autoplay.stop();
+      swiper.slideTo(index);
+    });
+  });
+  autoplayButton?.addEventListener('click', () => {
+    if (swiper.autoplay.running) {
+      swiper.autoplay.stop();
+    } else {
+      if (swiper.isEnd) swiper.slideTo(0);
+      swiper.autoplay.start();
+    }
+  });
+  document.getElementById('portfolio')?.addEventListener('focusin', (event) => {
+    if (event.target !== autoplayButton) swiper.autoplay.stop();
+  });
+  reducedMotion.addEventListener('change', () => {
+    swiper.params.speed = reducedMotion.matches ? 0 : 500;
+    if (reducedMotion.matches) swiper.autoplay.stop();
+  });
+  updateAutoplay(swiper);
   return swiper;
 }
 
-// 3. Initialize PhotoSwipe Lightbox
-function initPhotoSwipe() {
+// 3. Keep the full-screen viewer aligned with the selected photograph.
+function initPhotoSwipe(swiper: Swiper) {
   const lightbox = new PhotoSwipeLightbox({
     gallery: '#swiper-portfolio-wrapper',
     children: 'a',
     pswpModule: () => import('photoswipe'),
     padding: { top: 30, bottom: 30, left: 20, right: 20 },
     bgOpacity: 0.94,
-    showHideAnimationType: 'zoom',
+    showHideAnimationType: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'zoom',
   });
 
+  lightbox.on('beforeOpen', () => {
+    swiper.autoplay.stop();
+    swiper.keyboard.disable();
+  });
+  lightbox.on('change', () => {
+    if (lightbox.pswp) swiper.slideTo(lightbox.pswp.currIndex, 0);
+  });
+  lightbox.on('destroy', () => swiper.keyboard.enable());
   lightbox.init();
+  document.getElementById('btn-open-fullscreen')?.addEventListener('click', () => {
+    const gallery = document.getElementById('swiper-portfolio-wrapper');
+    if (gallery) lightbox.loadAndOpen(swiper.realIndex, { gallery });
+  });
 }
 
 // 4. Initialize Mobile Navigation & Header Scroll State
@@ -206,8 +239,8 @@ function initIcons() {
 // Bootstrap
 function initApp() {
   renderPortfolioSlides();
-  initSwiper();
-  initPhotoSwipe();
+  const swiper = initSwiper();
+  initPhotoSwipe(swiper);
   initNavigation();
   initIcons();
 }

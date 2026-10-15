@@ -253,62 +253,110 @@
         </div>
       </section>
 
-      <!-- PORTFÓLIO: Galeria Ampliada em Ordem Cronológica + PhotoSwipe Lightbox -->
-      <section id="portfolio" class="py-16 sm:py-24 overflow-hidden">
+      <!-- PORTFÓLIO: Carrossel Slider Editorial com Miniaturas Sincronizadas + PhotoSwipe Lightbox -->
+      <section id="portfolio" class="py-16 sm:py-24 bg-white/40 border-b border-cf-beige/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <!-- Cabeçalho da Seção com Contador Discreto -->
-          <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
-            <div class="space-y-2">
-              <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
-                Galeria de Momentos
+          <!-- Cabeçalho da Seção -->
+          <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-14 space-y-3">
+            <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
+              Galeria & Portfólio
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-cf-graphite tracking-tight leading-tight">
+              Registros que atravessam o tempo
+            </h2>
+            <p class="text-sm sm:text-base text-cf-warmgray max-w-xl mx-auto leading-relaxed">
+              Deslize pelo carrossel para contemplar cada momento. Navegue pelas setas laterais, arraste as fotos ou selecione qualquer miniatura abaixo.
+            </p>
+            <div class="w-12 h-0.5 bg-cf-beige mx-auto mt-4"></div>
+          </div>
+
+          <!-- Carrossel Slider Principal (Moldura e Visualização Imersiva) -->
+          <div class="relative max-w-5xl mx-auto">
+            <div class="relative rounded-2xl sm:rounded-3xl bg-white border border-cf-beige/60 p-2 sm:p-4 shadow-sm overflow-hidden">
+              <div id="portfolio-main-swiper" class="swiper w-full rounded-xl sm:rounded-2xl">
+                <div id="swiper-portfolio-wrapper" class="swiper-wrapper">
+                  <!-- Slides gerados dinamicamente via main.ts -->
+                </div>
+              </div>
+
+              <!-- Botões de Navegação Flutuantes Laterais (< e >) -->
+              <button
+                type="button"
+                class="swiper-button-prev-main absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-cf-white/95 hover:bg-cf-graphite text-cf-graphite hover:text-white backdrop-blur-md shadow-md flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 border border-cf-beige/60 cursor-pointer group"
+                aria-label="Foto anterior"
+              >
+                <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:-translate-x-0.5 transition-transform"></i>
+              </button>
+
+              <button
+                type="button"
+                class="swiper-button-next-main absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-cf-white/95 hover:bg-cf-graphite text-cf-graphite hover:text-white backdrop-blur-md shadow-md flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 border border-cf-beige/60 cursor-pointer group"
+                aria-label="Próxima foto"
+              >
+                <i data-lucide="chevron-right" class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-0.5 transition-transform"></i>
+              </button>
+
+              <!-- Badge de Contador Flutuante (Superior Esquerdo) -->
+              <div class="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 pointer-events-none">
+                <div class="px-3.5 py-1.5 rounded-full bg-cf-white/95 backdrop-blur-md border border-cf-beige/60 text-xs text-cf-warmgray font-medium tracking-wider shadow-xs flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cf-sage"></span>
+                  <span id="current-slide-number" class="text-sm font-semibold text-cf-graphite">01</span>
+                  <span>/ <span id="total-slide-number">21</span></span>
+                </div>
+              </div>
+
+              <!-- Botão de Ação: Tela Cheia (Superior Direito) -->
+              <div class="absolute top-4 sm:top-6 right-4 sm:right-6 z-20">
+                <button
+                  id="btn-open-fullscreen"
+                  type="button"
+                  class="px-3.5 py-1.5 rounded-full bg-cf-white/95 hover:bg-cf-graphite text-cf-graphite hover:text-white backdrop-blur-md border border-cf-beige/60 text-xs font-medium tracking-wide shadow-xs flex items-center gap-1.5 transition-all duration-300 cursor-pointer group"
+                  aria-label="Abrir foto em tela cheia com alta resolução"
+                >
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                  <span class="hidden sm:inline">Ver em tela cheia</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carrossel Secundário de Miniaturas (Thumbs Slider) -->
+          <div class="max-w-5xl mx-auto mt-4 sm:mt-5 px-1">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2 px-1 text-xs text-cf-warmgray">
+              <span class="font-medium tracking-wider uppercase text-[11px] text-cf-graphite/70">
+                Miniaturas do Portfólio
               </span>
-              <h2 class="text-3xl sm:text-4xl font-light text-cf-graphite tracking-tight">
-                Registros que atravessam o tempo
-              </h2>
-              <p class="text-sm sm:text-base text-cf-warmgray max-w-xl">
-                Deslize para ver as obras em grande escala. Toque em qualquer foto para abrir e ampliar em tela cheia com máxima definição.
-              </p>
+              <span class="text-cf-warmgray text-[11px]">
+                Clique ou arraste para navegar rapidamente
+              </span>
             </div>
 
-            <!-- Controles de Navegação Customizados e Contador -->
-            <div class="flex items-center gap-4">
-              <div class="px-3.5 py-1.5 rounded-full bg-white border border-cf-beige/60 text-xs text-cf-warmgray font-medium tracking-wider shadow-2xs">
-                <span id="current-slide-number" class="text-sm font-semibold text-cf-graphite">01</span>
-                <span>/ 21</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <button
-                  type="button"
-                  class="swiper-button-prev-custom w-11 h-11 rounded-full border border-cf-graphite/20 bg-white flex items-center justify-center text-cf-graphite hover:bg-cf-graphite hover:text-white transition-colors shadow-xs"
-                  aria-label="Foto anterior"
-                >
-                  <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                </button>
-                <button
-                  type="button"
-                  class="swiper-button-next-custom w-11 h-11 rounded-full border border-cf-graphite/20 bg-white flex items-center justify-center text-cf-graphite hover:bg-cf-graphite hover:text-white transition-colors shadow-xs"
-                  aria-label="Próxima foto"
-                >
-                  <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                </button>
+            <div id="portfolio-thumbs-swiper" class="swiper w-full !py-1.5 !px-0.5">
+              <div id="swiper-thumbs-wrapper" class="swiper-wrapper">
+                <!-- Miniaturas geradas dinamicamente via main.ts -->
               </div>
             </div>
           </div>
 
-          <!-- Swiper Container Ampliado -->
-          <div id="portfolio-swiper" class="swiper w-full !overflow-visible">
-            <div id="swiper-portfolio-wrapper" class="swiper-wrapper">
-              <!-- Slides renderizados dinamicamente pelo main.ts com dados otimizados -->
+          <!-- Barra de Controles e Dicas de Usabilidade -->
+          <div class="max-w-5xl mx-auto mt-4 sm:mt-5 px-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cf-warmgray">
+            <div class="flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cf-sage"></i>
+              <span>Navegue usando as setas laterais, miniaturas ou teclado (← / →)</span>
             </div>
-            <!-- Paginação do Swiper -->
-            <div class="swiper-pagination !relative !mt-8"></div>
-          </div>
 
-          <!-- Rodapé do Portfólio com aviso delicado -->
-          <div class="mt-8 text-center text-xs text-cf-warmgray flex items-center justify-center gap-2">
-            <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
-            <span>Clique ou toque em qualquer imagem para abrir no visualizador em tela cheia</span>
+            <!-- Controle de Autoplay -->
+            <div class="flex items-center gap-2">
+              <button
+                id="btn-autoplay-toggle"
+                type="button"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-cf-beige/60 text-cf-warmgray hover:text-cf-graphite hover:border-cf-graphite/40 transition-all text-xs font-medium cursor-pointer shadow-2xs"
+                aria-label="Pausar ou iniciar transição automática"
+              >
+                <span id="autoplay-text">Reproduzir</span>
+              </button>
+            </div>
           </div>
 
         </div>
