@@ -1,0 +1,35 @@
+{
+  "name": "cristina-ferreira-fotografia",
+  "version": "1.0.0",
+  "description": "Landing page de fotografia afetiva para Cristina Ferreira (Boa Esperança - MG)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview --port 5174",
+    "optimize-images": "node scripts/optimize-images.js"
+  },
+  "keywords": [
+    "fotografia",
+    "landing-page",
+    "boa-esperanca",
+    "casamentos",
+    "ensaios",
+    "eventos"
+  ],
+  "author": "Nathan Rodrigues Oliveira",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "lucide": "^1.16.0",
+    "photoswipe": "^5.4.4",
+    "swiper": "^12.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.2",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}

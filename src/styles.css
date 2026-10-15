@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Cristina Ferreira Fotografia - Paleta Oficial */
+  --color-cf-white: #FFFFFF;
+  --color-cf-cream: #F7F5F0;
+  --color-cf-graphite: #2E2E2E;
+  --color-cf-warmgray: #77736D;
+  --color-cf-beige: #D8CFC2;
+  --color-cf-sage: #C9D3C2;
+  --color-cf-blue: #CAD3D8;
+  --color-cf-lightgray: #E8E6E2;
+}
+
+:root {
+  color-scheme: light;
+  background-color: #F7F5F0;
+  color: #2E2E2E;
+}
+
+/* Suavidade geral de tipografia e rolagem */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Molduras de foto estilo galeria / passe-partout */
+.photo-passepartout {
+  background: #FFFFFF;
+  padding: 10px;
+  box-shadow: 0 4px 20px -2px rgba(46, 46, 46, 0.05), 0 2px 6px -1px rgba(46, 46, 46, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-passepartout:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -4px rgba(46, 46, 46, 0.08), 0 4px 12px -2px rgba(46, 46, 46, 0.04);
+}
+
+/* Swiper custom styling - discreto e elegante */
+.swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background: #D8CFC2 !important;
+  opacity: 0.6 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2E2E2E !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* Custom scrollbar silencioso */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F5F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CFC2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #77736D;
+}

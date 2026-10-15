@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cristina Ferreira | Fotografia Afetiva em Boa Esperança - MG</title>
+    <meta
+      name="description"
+      content="Fotografia de casamentos, 15 anos, ensaios externos, estúdio e mini sessões de temporadas por Cristina Ferreira em Boa Esperança, Minas Gerais."
+    />
+    <meta name="theme-color" content="#F7F5F0" />
+
+    <!-- Open Graph / Meta Compartilhamento -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cristina Ferreira | Fotografia Afetiva" />
+    <meta property="og:description" content="Sua História merece ser lembrada. Registros com afeto, cuidado e sensibilidade em Boa Esperança - MG." />
+    <meta property="og:image" content="/images/poesia-chuva.webp" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E2E2E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z'/><circle cx='12' cy='13' r='3'/></svg>" />
+
+    <!-- Google Fonts: Plus Jakarta Sans (Minimalista Moderna) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-cf-cream text-cf-graphite antialiased selection:bg-cf-sage selection:text-cf-graphite min-h-screen flex flex-col font-sans">
+
+    <!-- Header / Barra de Navegação -->
+    <header
+      id="main-header"
+      class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-transparent bg-cf-cream/80 backdrop-blur-md"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+        <!-- Logo / Assinatura -->
+        <a href="#inicio" class="flex flex-col group">
+          <span class="text-xl sm:text-2xl font-semibold tracking-wider text-cf-graphite group-hover:text-cf-warmgray transition-colors">
+            CRISTINA FERREIRA
+          </span>
+          <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-cf-warmgray -mt-1 font-medium">
+            Fotografia • Boa Esperança - MG
+          </span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-cf-graphite/80" aria-label="Navegação principal">
+          <a href="#inicio" class="nav-link-item hover:text-cf-graphite transition-colors">Início</a>
+          <a href="#sobre" class="nav-link-item hover:text-cf-graphite transition-colors">O Meu Olhar</a>
+          <a href="#portfolio" class="nav-link-item hover:text-cf-graphite transition-colors">Portfólio</a>
+          <a href="#estudio" class="nav-link-item hover:text-cf-graphite transition-colors">O Estúdio</a>
+          <a href="#depoimentos" class="nav-link-item hover:text-cf-graphite transition-colors">Depoimentos</a>
+        </nav>
+
+        <!-- CTA Header WhatsApp -->
+        <div class="hidden sm:flex items-center">
+          <a
+            href="https://wa.me/5535987024819?text=Ol%C3%A1%20Cristina!%20Gostaria%20de%20conversar%20sobre%20os%20ensaios%20fotogr%C3%A1ficos."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cf-graphite/20 bg-white/70 hover:bg-cf-graphite hover:text-white transition-all duration-200 text-xs uppercase tracking-wider font-medium shadow-xs"
+          >
+            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-cf-sage group-hover:text-white"></i>
+            <span>Orçamento no WhatsApp</span>
+          </a>
+        </div>
+
+        <!-- Botão Menu Mobile -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="md:hidden p-2 rounded-lg text-cf-graphite hover:bg-cf-beige/40 focus:outline-none"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+        >
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Menu Mobile Expansível -->
+      <div id="mobile-menu" class="hidden md:hidden border-b border-cf-beige/60 bg-cf-cream/98 px-6 pt-2 pb-6 space-y-4 shadow-lg">
+        <a href="#inicio" class="nav-link-item block text-base font-medium text-cf-graphite py-1">Início</a>
+        <a href="#sobre" class="nav-link-item block text-base font-medium text-cf-graphite py-1">O Meu Olhar</a>
+        <a href="#portfolio" class="nav-link-item block text-base font-medium text-cf-graphite py-1">Portfólio</a>
+        <a href="#estudio" class="nav-link-item block text-base font-medium text-cf-graphite py-1">O Estúdio</a>
+        <a href="#depoimentos" class="nav-link-item block text-base font-medium text-cf-graphite py-1">Depoimentos</a>
+        <div class="pt-2">
+          <a
+            href="https://wa.me/5535987024819?text=Ol%C3%A1%20Cristina!%20Gostaria%20de%20conversar%20sobre%20os%20ensaios%20fotogr%C3%A1ficos."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-cf-graphite text-white text-xs uppercase tracking-wider font-medium"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4 text-cf-sage"></i>
+            <span>Falar no WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow pt-24 sm:pt-28">
+
+      <!-- HERO SECTION: Meu jeito de trabalhar -->
+      <section id="inicio" class="py-12 sm:py-20 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- Coluna de Texto e Apresentação -->
+            <div class="lg:col-span-7 space-y-6 sm:space-y-8 order-2 lg:order-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cf-sage/20 border border-cf-sage/40 text-xs font-medium text-cf-graphite tracking-wide">
+                <span class="w-1.5 h-1.5 rounded-full bg-cf-warmgray"></span>
+                Fotografia Afetiva & Documental
+              </div>
+
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-cf-graphite leading-tight">
+                Meu jeito de trabalhar
+              </h1>
+
+              <div class="space-y-4 text-base sm:text-lg text-cf-warmgray font-normal leading-relaxed">
+                <p>
+                  Por trás de cada registro, estou eu: do primeiro contato à fotografia e à edição das imagens. Trabalho sozinha e acompanho pessoalmente cada etapa, com atenção aos detalhes e carinho pela sua história.
+                </p>
+                <p>
+                  Fotografo casamentos e cerimônias intimistas, casamento civil, batizado, aniversários de 15 anos, festas e outros eventos. Meu olhar está voltado para as emoções, os encontros e os momentos espontâneos que tornam cada ocasião especial.
+                </p>
+                <p>
+                  Também realizo ensaios externos e em estúdio, com destaque para as mini sessões de temporadas, como Dia das Mães, Natal, Páscoa, Dia das Crianças…
+                </p>
+                <p class="text-cf-graphite font-medium">
+                  Busco proporcionar uma experiência leve e acolhedora, para que você se sinta à vontade e possa aproveitar o momento enquanto eu cuido dos registros.
+                </p>
+              </div>
+
+              <div class="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <a
+                  href="https://wa.me/5535987024819?text=Ol%C3%A1%20Cristina!%20Gostaria%20de%20saber%20mais%20sobre%20os%20ensaios%20e%20datas%20dispon%C3%ADveis."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-cf-graphite text-white hover:bg-cf-warmgray transition-all duration-300 text-sm font-medium tracking-wide shadow-sm group"
+                >
+                  <i data-lucide="message-circle" class="w-4 h-4 text-cf-sage"></i>
+                  <span>Conversar com a Cristina</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs text-cf-warmgray">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-cf-warmgray"></i>
+                  <span>Estúdio em Boa Esperança, Minas Gerais</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna de Imagem / Retrato da Fotógrafa -->
+            <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+              <div class="relative w-full max-w-md">
+                <div class="photo-passepartout rounded-2xl bg-white border border-cf-beige/40">
+                  <div class="overflow-hidden rounded-xl bg-cf-lightgray aspect-[3/4]">
+                    <img
+                      src="/images/cristina-perfil.webp"
+                      alt="Cristina Ferreira, fotógrafa com sua câmera profissional"
+                      width="1086"
+                      height="1448"
+                      class="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div class="pt-3 pb-1 px-2 flex items-center justify-between text-xs text-cf-warmgray">
+                    <span class="font-medium tracking-wide text-cf-graphite">Cristina Ferreira</span>
+                    <span class="text-cf-warmgray">8 anos eternizando histórias</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO POÉTICA & SOBRE: "Sua História merece ser lembrada" -->
+      <section id="sobre" class="py-16 sm:py-24 bg-white/50 border-y border-cf-beige/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <!-- Frase de Abertura Poética -->
+          <div class="max-w-3xl mx-auto text-center mb-16 sm:mb-20 space-y-3">
+            <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
+              O Significado do Registro
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-cf-graphite tracking-tight leading-tight">
+              Sua História merece ser lembrada
+            </h2>
+            <div class="w-12 h-0.5 bg-cf-beige mx-auto mt-4"></div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- Imagem Poética (Menina com sombrinha sob água em P&B) -->
+            <div class="lg:col-span-6 flex justify-center">
+              <div class="relative w-full max-w-lg">
+                <div class="photo-passepartout rounded-2xl bg-white border border-cf-beige/40">
+                  <div class="overflow-hidden rounded-xl bg-cf-lightgray aspect-[4/3] relative">
+                    <img
+                      src="/images/poesia-chuva.webp"
+                      alt="Menina sob sombrinha transparente brincando com respingos d'água em preto e branco"
+                      width="1600"
+                      height="1142"
+                      loading="lazy"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div class="pt-3 pb-1 px-2 text-center text-xs text-cf-warmgray italic">
+                    "O olhar voltado para as emoções e os momentos espontâneos."
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Texto de Biografia da Cristina -->
+            <div class="lg:col-span-6 space-y-6 text-cf-warmgray text-base sm:text-lg leading-relaxed">
+              <div class="inline-flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-cf-graphite">
+                <i data-lucide="heart" class="w-4 h-4 text-cf-sage"></i>
+                <span>História & Vocação</span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl font-light text-cf-graphite">
+                Sou Cristina Ferreira, fotógrafa há oito anos, em Boa Esperança, Minas Gerais, e mãe de dois meninos.
+              </h3>
+
+              <p>
+                Minha paixão pela fotografia vem desde pequena. Esse amor se transformou em profissão e, hoje, registro histórias com o mesmo cuidado com que guardo as minhas próprias lembranças.
+              </p>
+
+              <p>
+                Em cada ensaio ou evento, meu desejo é criar imagens que façam você reviver momentos especiais e sentir de novo a emoção de cada um deles.
+              </p>
+
+              <div class="pt-4 grid grid-cols-2 gap-4 border-t border-cf-beige/40 text-sm">
+                <div class="space-y-1">
+                  <div class="text-2xl font-light text-cf-graphite">8+</div>
+                  <div class="text-xs text-cf-warmgray">Anos de dedicação e amor à fotografia</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-2xl font-light text-cf-graphite">100%</div>
+                  <div class="text-xs text-cf-warmgray">Acompanhamento pessoal do início à edição</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFÓLIO: Slider Swiper + PhotoSwipe Lightbox -->
+      <section id="portfolio" class="py-16 sm:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <!-- Cabeçalho da Seção -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
+                Galeria de Momentos
+              </span>
+              <h2 class="text-3xl sm:text-4xl font-light text-cf-graphite tracking-tight">
+                Registros que atravessam o tempo
+              </h2>
+              <p class="text-sm sm:text-base text-cf-warmgray max-w-xl">
+                Arraste para o lado para explorar a galeria. Toque em qualquer fotografia para abrir e ampliar em tela cheia com máxima definição.
+              </p>
+            </div>
+
+            <!-- Controles de Navegação Customizados -->
+            <div class="flex items-center gap-3">
+              <button
+                type="button"
+                class="swiper-button-prev-custom w-10 h-10 rounded-full border border-cf-graphite/20 bg-white flex items-center justify-center text-cf-graphite hover:bg-cf-graphite hover:text-white transition-colors shadow-xs"
+                aria-label="Foto anterior"
+              >
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+              </button>
+              <button
+                type="button"
+                class="swiper-button-next-custom w-10 h-10 rounded-full border border-cf-graphite/20 bg-white flex items-center justify-center text-cf-graphite hover:bg-cf-graphite hover:text-white transition-colors shadow-xs"
+                aria-label="Próxima foto"
+              >
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Swiper Container -->
+          <div id="portfolio-swiper" class="swiper w-full !overflow-visible">
+            <div id="swiper-portfolio-wrapper" class="swiper-wrapper">
+              <!-- Slides renderizados dinamicamente pelo main.ts com dados otimizados -->
+            </div>
+            <!-- Paginação do Swiper -->
+            <div class="swiper-pagination !relative !mt-8"></div>
+          </div>
+
+          <!-- Rodapé do Portfólio com aviso delicado -->
+          <div class="mt-8 text-center text-xs text-cf-warmgray flex items-center justify-center gap-2">
+            <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+            <span>Clique ou toque em qualquer imagem para abrir no visualizador em tela cheia</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- O ESTÚDIO & MINI SESSÕES -->
+      <section id="estudio" class="py-16 sm:py-24 bg-white/60 border-t border-cf-beige/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- Imagem da Fachada do Estúdio Físico -->
+            <div class="lg:col-span-6 flex justify-center order-2 lg:order-1">
+              <div class="relative w-full max-w-lg">
+                <div class="photo-passepartout rounded-2xl bg-white border border-cf-beige/40">
+                  <div class="overflow-hidden rounded-xl bg-cf-lightgray aspect-[4/3]">
+                    <img
+                      src="/images/estudio-fachada.webp"
+                      alt="Fachada do estúdio Cristina Ferreira Fotografia, número 293 em Boa Esperança, MG"
+                      width="1600"
+                      height="1142"
+                      loading="lazy"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div class="pt-3 pb-1 px-2 flex items-center justify-between text-xs text-cf-warmgray">
+                    <span class="font-medium text-cf-graphite">Estúdio Cristina Ferreira • Nº 293</span>
+                    <span>Boa Esperança - MG</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Conteúdo e Especialidades -->
+            <div class="lg:col-span-6 space-y-6 order-1 lg:order-2">
+              <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
+                Espaço & Experiência
+              </span>
+
+              <h2 class="text-3xl sm:text-4xl font-light text-cf-graphite tracking-tight leading-tight">
+                Um lugar acolhedor pensado para a sua família
+              </h2>
+
+              <div class="space-y-4 text-base sm:text-lg text-cf-warmgray font-normal leading-relaxed">
+                <p>
+                  Também realizo ensaios externos e em estúdio, com destaque para as mini sessões de temporadas, como Dia das Mães, Natal, Páscoa, Dia das Crianças…
+                </p>
+                <p>
+                  Busco proporcionar uma experiência leve e acolhedora, para que você se sinta à vontade e possa aproveitar o momento enquanto eu cuido dos registros.
+                </p>
+              </div>
+
+              <!-- Blocos de Especialidades com Ícones -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-cf-cream/50 border border-cf-beige/60 space-y-1">
+                  <div class="flex items-center gap-2 text-cf-graphite font-medium text-sm">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-cf-sage"></i>
+                    <span>Mini Sessões Sazonais</span>
+                  </div>
+                  <p class="text-xs text-cf-warmgray leading-relaxed">
+                    Cenários temáticos e exclusivos para Natal, Dia das Mães, Páscoa e Dia das Crianças.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-cf-cream/50 border border-cf-beige/60 space-y-1">
+                  <div class="flex items-center gap-2 text-cf-graphite font-medium text-sm">
+                    <i data-lucide="camera" class="w-4 h-4 text-cf-blue"></i>
+                    <span>Estúdio & Ensaios Externos</span>
+                  </div>
+                  <p class="text-xs text-cf-warmgray leading-relaxed">
+                    Luz natural, campos, áreas ao ar livre ou a tranquilidade climatizada do estúdio próprio.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-cf-cream/50 border border-cf-beige/60 space-y-1">
+                  <div class="flex items-center gap-2 text-cf-graphite font-medium text-sm">
+                    <i data-lucide="heart" class="w-4 h-4 text-cf-sage"></i>
+                    <span>Casamentos & Eventos</span>
+                  </div>
+                  <p class="text-xs text-cf-warmgray leading-relaxed">
+                    Casamento civil, cerimônias intimistas, batizados e celebrações com foco no afeto real.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-cf-cream/50 border border-cf-beige/60 space-y-1">
+                  <div class="flex items-center gap-2 text-cf-graphite font-medium text-sm">
+                    <i data-lucide="smile" class="w-4 h-4 text-cf-warmgray"></i>
+                    <span>15 Anos & Gestantes</span>
+                  </div>
+                  <p class="text-xs text-cf-warmgray leading-relaxed">
+                    Registros cheios de delicadeza para celebrar transições e momentos inesquecíveis da vida.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <a
+                  href="https://wa.me/5535987024819?text=Ol%C3%A1%20Cristina!%20Gostaria%20de%20consultar%20as%20pr%C3%B3ximas%20mini%20sess%C3%B5es%20e%20ensaios."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium text-cf-graphite hover:text-cf-warmgray transition-colors border-b border-cf-graphite/40 pb-0.5"
+                >
+                  <span>Consultar agenda para mini sessões e ensaios</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS DE CLIENTES -->
+      <section id="depoimentos" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
+            <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
+              Vozes de Quem Viveu a Experiência
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-light text-cf-graphite tracking-tight">
+              O que dizem os corações que fotografei
+            </h2>
+            <div class="w-12 h-0.5 bg-cf-beige mx-auto mt-4"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Depoimento 1: Phalloma -->
+            <div class="p-8 rounded-2xl bg-white border border-cf-beige/40 shadow-xs flex flex-col justify-between space-y-6">
+              <div class="space-y-4">
+                <div class="text-cf-sage text-2xl font-serif">“</div>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  Cristina, quero agradecer de coração pelo ensaio de Natal da minha bebê. Foi o primeiro ensaio dela, e você conseguiu registrar esse momento tão especial com tanto amor, paciência e sensibilidade.
+                </p>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  As fotos ficaram simplesmente perfeitas! Obrigada por eternizar uma lembrança tão importante para nós. Foi maravilhoso! ❤️
+                </p>
+              </div>
+              <div class="pt-4 border-t border-cf-beige/40 flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-medium text-cf-graphite">Phalloma</div>
+                  <div class="text-xs text-cf-warmgray">Ensaio de Natal</div>
+                </div>
+                <i data-lucide="heart" class="w-4 h-4 text-cf-sage/80 fill-cf-sage/20"></i>
+              </div>
+            </div>
+
+            <!-- Depoimento 2: Luísa -->
+            <div class="p-8 rounded-2xl bg-white border border-cf-beige/40 shadow-xs flex flex-col justify-between space-y-6">
+              <div class="space-y-4">
+                <div class="text-cf-sage text-2xl font-serif">“</div>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  Meu primeiro Dia das Mães com a Maria Alice fora da barriga merecia um registro especial. Com a correria da rotina, me vi sem um ensaio marcado e fiquei triste por pensar que não conseguiria guardar esse momento.
+                </p>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  Mandei uma mensagem para a Cris de madrugada e, no dia seguinte, ela prontamente me respondeu. Mesmo sem horários disponíveis, encontrou um jeito de me atender.
+                </p>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  Ela ainda não me conhecia, eu não era cliente, mas me acolheu. Depois disso e de conhecer sua competência, virei uma grande fã do seu trabalho! Obrigada pelos registros lindos, pela disponibilidade e pelo carinho com que sempre nos atendeu. Você arrasa!
+                </p>
+              </div>
+              <div class="pt-4 border-t border-cf-beige/40 flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-medium text-cf-graphite">Luísa</div>
+                  <div class="text-xs text-cf-warmgray">Ensaio de Dia das Mães</div>
+                </div>
+                <i data-lucide="heart" class="w-4 h-4 text-cf-sage/80 fill-cf-sage/20"></i>
+              </div>
+            </div>
+
+            <!-- Depoimento 3: Raquel -->
+            <div class="p-8 rounded-2xl bg-white border border-cf-beige/40 shadow-xs flex flex-col justify-between space-y-6">
+              <div class="space-y-4">
+                <div class="text-cf-sage text-2xl font-serif">“</div>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  Obrigada, tia Cris, por acompanhar tudo desde a Lolô na barriga e a cada mesversário, aniversário, Dia das Mães, Natal, Dia dos Pais e tantos outros momentos!
+                </p>
+                <p class="text-sm sm:text-base text-cf-warmgray leading-relaxed font-normal">
+                  Você é perfeita e não é à toa que arrasa sempre e brilha por onde passa. Você é luz! Obrigada por cada clique, por sempre nos ouvir e topar tudo!
+                </p>
+              </div>
+              <div class="pt-4 border-t border-cf-beige/40 flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-medium text-cf-graphite">Raquel</div>
+                  <div class="text-xs text-cf-warmgray">Acompanhamento de Família</div>
+                </div>
+                <i data-lucide="heart" class="w-4 h-4 text-cf-sage/80 fill-cf-sage/20"></i>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CTA FINAL & CONVITE: Contato Direto -->
+      <section id="contato" class="py-16 sm:py-24 bg-white/50 border-t border-cf-beige/40">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+
+          <div class="space-y-4">
+            <span class="text-xs uppercase tracking-[0.25em] text-cf-warmgray font-medium">
+              Agendamento & Conversa
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-cf-graphite tracking-tight leading-tight">
+              Vamos contar a sua história juntos?
+            </h2>
+            <p class="text-base sm:text-lg text-cf-warmgray max-w-2xl mx-auto leading-relaxed">
+              Cada fase da vida merece ser guardada com o carinho e a sensibilidade de quem ama registrar o que é de verdade. Fale diretamente comigo no WhatsApp para combinarmos o seu ensaio.
+            </p>
+          </div>
+
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://wa.me/5535987024819?text=Ol%C3%A1%20Cristina!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20ensaios%20e%20agendamento."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-cf-graphite text-white hover:bg-cf-warmgray transition-all duration-300 text-sm font-medium tracking-wide shadow-md group"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5 text-cf-sage"></i>
+              <span>Solicitar Orçamento no WhatsApp</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+
+          <div class="pt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-cf-warmgray max-w-md mx-auto">
+            <div class="flex items-center justify-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-cf-graphite"></i>
+              <span>(35) 9 8702-4819</span>
+            </div>
+            <div class="flex items-center justify-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-cf-graphite"></i>
+              <span>Estúdio no nº 293 • Boa Esperança - MG</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="border-t border-cf-beige/40 bg-cf-cream py-10 text-xs text-cf-warmgray">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="font-medium text-cf-graphite">Cristina Ferreira Fotografia</span> • Todos os direitos reservados.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#inicio" class="hover:text-cf-graphite transition-colors">Voltar ao topo ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
+    <aside aria-label="Atendimento rápido no WhatsApp" class="fixed bottom-6 right-6 z-50">
+      <a
+        href="https://wa.me/5535987024819?text=Ol%C3%A1%20Cristina!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex items-center gap-2.5 p-3 sm:px-4 sm:py-3 rounded-full bg-cf-graphite text-white hover:bg-cf-warmgray shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 border border-white/20"
+        aria-label="Conversar no WhatsApp com Cristina Ferreira"
+      >
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cf-sage opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-cf-sage"></span>
+        </span>
+        <i data-lucide="message-circle" class="w-5 h-5 text-cf-sage"></i>
+        <span class="hidden sm:inline text-xs font-medium tracking-wide">Falar com a Cristina</span>
+      </a>
+    </aside>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
