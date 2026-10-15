@@ -24,47 +24,44 @@ import {
   X,
   Clock,
   CheckCircle2,
-  Smile
+  Smile,
+  Mail,
+  ExternalLink
 } from 'lucide';
 import { portfolioPhotos } from './data/photos';
 
-// 1. Render Portfolio Swiper Slides
+// 1. Render Portfolio Swiper Slides (Sem nomes/rótulos, fotos maiores e em ordem desde a 1ª)
 function renderPortfolioSlides() {
   const wrapper = document.getElementById('swiper-portfolio-wrapper');
   if (!wrapper) return;
 
-  const slidesHtml = portfolioPhotos.map((photo, index) => {
-    const isVertical = photo.aspectRatio < 1;
+  const slidesHtml = portfolioPhotos.map((photo) => {
     return `
-      <div class="swiper-slide p-2 sm:p-3">
-        <div class="photo-passepartout w-full h-full flex flex-col justify-between rounded-xl group relative overflow-hidden bg-white border border-cf-beige/40">
+      <div class="swiper-slide p-1 sm:p-2">
+        <div class="photo-passepartout w-full h-[480px] sm:h-[580px] md:h-[640px] lg:h-[700px] flex items-center justify-center rounded-2xl group relative overflow-hidden bg-white border border-cf-beige/50 p-2 sm:p-3">
           <a
             href="${photo.fullSrc}"
             data-pswp-width="${photo.width}"
             data-pswp-height="${photo.height}"
             target="_blank"
             rel="noreferrer"
-            class="block relative w-full overflow-hidden rounded-lg cursor-zoom-in bg-cf-lightgray/50 aspect-[4/5] sm:aspect-[3/4]"
-            aria-label="Abrir foto ${index + 1} em tela cheia"
+            class="block relative w-full h-full overflow-hidden rounded-xl cursor-zoom-in bg-cf-lightgray/40"
+            aria-label="Abrir fotografia em tela cheia com alta resolução"
           >
             <img
               src="${photo.thumbSrc}"
               alt="${photo.alt}"
               loading="lazy"
               decoding="async"
-              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-103"
             />
-            <div class="absolute inset-0 bg-cf-graphite/0 group-hover:bg-cf-graphite/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cf-white/90 backdrop-blur-sm text-cf-graphite text-xs font-medium rounded-full shadow-sm transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                <i data-lucide="maximize-2" class="w-3.5 h-3.5 text-cf-graphite"></i>
-                Ampliar
+            <div class="absolute inset-0 bg-cf-graphite/0 group-hover:bg-cf-graphite/15 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-2 px-4 py-2 bg-cf-white/95 backdrop-blur-md text-cf-graphite text-xs font-medium rounded-full shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <i data-lucide="maximize-2" class="w-4 h-4 text-cf-graphite"></i>
+                Ver em tela cheia
               </span>
             </div>
           </a>
-          <div class="pt-3 pb-1 px-1 flex items-center justify-between text-xs text-cf-warmgray">
-            <span class="font-medium tracking-wide">Registro ${String(index + 1).padStart(2, '0')}</span>
-            <span class="text-[11px] text-cf-warmgray/70">${isVertical ? 'Vertical' : 'Paisagem'}</span>
-          </div>
         </div>
       </div>
     `;
@@ -73,19 +70,22 @@ function renderPortfolioSlides() {
   wrapper.innerHTML = slidesHtml;
 }
 
-// 2. Initialize Swiper Carousel
+// 2. Initialize Swiper Carousel (Partindo da 1ª foto, fotos ampliadas e navegação elegante)
 function initSwiper() {
-  new Swiper('#portfolio-swiper', {
+  const counterEl = document.getElementById('current-slide-number');
+
+  const swiper = new Swiper('#portfolio-swiper', {
     modules: [Navigation, Pagination, Keyboard, Autoplay],
-    slidesPerView: 1.15,
+    slidesPerView: 1.08,
     spaceBetween: 16,
+    initialSlide: 0,
     centeredSlides: false,
     grabCursor: true,
     keyboard: {
       enabled: true,
     },
     autoplay: {
-      delay: 4500,
+      delay: 5000,
       disableOnInteraction: true,
       pauseOnMouseEnter: true,
     },
@@ -99,24 +99,34 @@ function initSwiper() {
       prevEl: '.swiper-button-prev-custom',
     },
     breakpoints: {
-      480: {
-        slidesPerView: 1.5,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2.3,
-        spaceBetween: 24,
+      640: {
+        slidesPerView: 1.35,
+        spaceBetween: 22,
       },
       1024: {
-        slidesPerView: 3.2,
+        slidesPerView: 1.85,
         spaceBetween: 28,
       },
-      1280: {
-        slidesPerView: 3.6,
+      1440: {
+        slidesPerView: 2.1,
         spaceBetween: 32,
       },
     },
+    on: {
+      init: function (s) {
+        if (counterEl) {
+          counterEl.textContent = String(s.realIndex + 1).padStart(2, '0');
+        }
+      },
+      slideChange: function (s) {
+        if (counterEl) {
+          counterEl.textContent = String(s.realIndex + 1).padStart(2, '0');
+        }
+      },
+    },
   });
+
+  return swiper;
 }
 
 // 3. Initialize PhotoSwipe Lightbox
@@ -186,7 +196,9 @@ function initIcons() {
       X,
       Clock,
       CheckCircle2,
-      Smile
+      Smile,
+      Mail,
+      ExternalLink
     },
   });
 }
