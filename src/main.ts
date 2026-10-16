@@ -31,13 +31,22 @@ import {
 } from 'lucide';
 import { portfolioPhotos } from './data/photos';
 
-// 1. Render the main slider and its thumbnail strip, in source order.
+const portfolioOrder = [1, 3, 4, 16, 2, 5, 6, 8, 9, 10, 11, 12, 13, 14, 17, 21, 18, 19];
+const orderedPhotos = [...portfolioPhotos].sort((a, b) => {
+  const position = (id: string) => {
+    const index = portfolioOrder.indexOf(Number(id.replace('foto-', '')));
+    return index === -1 ? portfolioOrder.length : index;
+  };
+  return position(a.id) - position(b.id);
+});
+
+// 1. Render the main slider and its thumbnail strip in the selected order.
 function renderPortfolioSlides() {
   const wrapper = document.getElementById('swiper-portfolio-wrapper');
   const thumbs = document.getElementById('swiper-thumbs-wrapper');
   if (!wrapper || !thumbs) return;
 
-  wrapper.innerHTML = portfolioPhotos.map((photo) => `
+  wrapper.innerHTML = orderedPhotos.map((photo) => `
     <div class="swiper-slide">
       <a href="${photo.fullSrc}" data-pswp-width="${photo.width}"
         data-pswp-height="${photo.height}" class="portfolio-photo"
@@ -48,7 +57,7 @@ function renderPortfolioSlides() {
     </div>
   `).join('');
 
-  thumbs.innerHTML = portfolioPhotos.map((photo, index) => `
+  thumbs.innerHTML = orderedPhotos.map((photo, index) => `
     <div class="swiper-slide">
       <button type="button" class="portfolio-thumb" data-photo-index="${index}"
         aria-label="Ver fotografia ${index + 1}" aria-controls="portfolio-main-swiper">
