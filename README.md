@@ -4,6 +4,20 @@ Landing page institucional para a fotógrafa **Cristina Ferreira**, especializad
 
 Projeto desenvolvido com design editorial minimalista e acolhedor, priorizando a valorização das fotografias com alta fidelidade visual, navegação fluida e integração direta para contato e agendamento via WhatsApp.
 
+**Domínio oficial:** [https://cristinafotografia.com/](https://cristinafotografia.com/)
+
+## SEO e publicação
+
+- URL canônica: `https://cristinafotografia.com/` (HTTPS, sem `www`).
+- Metadados Open Graph e Twitter Cards com URLs absolutas das imagens.
+- Dados estruturados `LocalBusiness` em `index.html`, com endereço, contatos e URL do estúdio.
+- Sitemap: `https://cristinafotografia.com/sitemap.xml`, gerado a partir de `public/sitemap.xml`.
+- Rastreamento: `public/robots.txt` permite acesso e referencia o sitemap. Ambos os arquivos são copiados para `dist/` durante o build.
+
+Após publicar, verificar se a página, as imagens, o sitemap e o robots respondem corretamente no domínio oficial. Configurar na hospedagem redirecionamentos permanentes de HTTP e de `www` (caso utilizado) para a URL canônica; as tags HTML não substituem esses redirecionamentos.
+
+No Google Search Console, verificar a propriedade `cristinafotografia.com`, enviar o sitemap e solicitar a indexação da página inicial. Manter esse mesmo endereço no Perfil da Empresa no Google. Essas etapas dependem de acesso às respectivas contas e não são executadas pelo build.
+
 ---
 
 ## 🛠️ Tecnologias & Bibliotecas
@@ -53,7 +67,7 @@ Projeto desenvolvido com design editorial minimalista e acolhedor, priorizando a
 ### 1. Clonar e Instalar Dependências
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/NathanLuceat/cristinafotografia
 cd cristinafotografa
 npm install
 ```
